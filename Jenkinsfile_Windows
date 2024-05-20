@@ -31,12 +31,28 @@ pipeline {
     post {
         success {
             echo 'Pipeline completed successfully!'
+            emailext(
+                to: 'mistyoky@gmail.com',
+                subject: 'JENKINS FEEDBACK - SUCCESS',
+                body: 'Here is the feedback from Jenkins: The pipeline completed successfully.'
+            )
         }
         failure {
             echo 'Pipeline failed!'
+            emailext(
+                to: 'mistyoky@gmail.com',
+                subject: 'JENKINS FEEDBACK - FAILURE',
+                body: 'Here is the feedback from Jenkins: The pipeline failed.'
+            )
         }
         always {
             echo 'Pipeline finished.'
+            emailext(
+                to: 'mistyoky@gmail.com',
+                subject: 'JENKINS FEEDBACK - ALWAYS',
+                body: 'Here is the feedback from Jenkins: The pipeline has finished its execution.'
+            )
         }
     }
 }
+
